@@ -197,3 +197,13 @@ i.menu-mobile {
 .section-bg {
     background-color: #eff5ff;
 }
+
+.progress-custom {
+    background-color: #d4d6d9;
+    /* Define a cor de fundo da barra de progresso */
+}
+
+.progress-custom .progress-bar {
+    background-color: #25528d;
+    /* Define a cor da barra de preenchimento da barra de progresso */
+}
