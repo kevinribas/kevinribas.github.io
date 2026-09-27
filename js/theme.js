@@ -368,4 +368,43 @@
 		}
 	});
 
-})(jQuery)
+	/*------------------------
+	   Copy Email to Clipboard
+	-------------------------- */
+	$(document).on('click', '.btn-copy-email', function (e) {
+		e.preventDefault();
+		var email = $(this).data('email') || 'contato@kevinribas.com';
+		var targetBadge = $('.copy-feedback-badge');
+
+		function showCopySuccess() {
+			targetBadge.addClass('active');
+			setTimeout(function () {
+				targetBadge.removeClass('active');
+			}, 2500);
+		}
+
+		if (navigator.clipboard && window.isSecureContext) {
+			navigator.clipboard.writeText(email).then(function () {
+				showCopySuccess();
+			}).catch(function () {
+				fallbackCopy(email);
+			});
+		} else {
+			fallbackCopy(email);
+		}
+
+		function fallbackCopy(text) {
+			var tempInput = $('<input>');
+			$('body').append(tempInput);
+			tempInput.val(text).select();
+			try {
+				document.execCommand('copy');
+				showCopySuccess();
+			} catch (err) {
+				console.error('Fallback copy failed', err);
+			}
+			tempInput.remove();
+		}
+	});
+
+})(jQuery)
