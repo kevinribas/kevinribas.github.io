@@ -1087,6 +1087,20 @@ html[dir="rtl"] body:not(.side-header-right) #back-to-top {
   box-shadow: none;
 }
 
+.btn-outline-primary {
+  color: #20c997;
+  border-color: #20c997;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+  background-color: #1baa80;
+  border-color: #1baa80;
+  color: #fff;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: #20c997;
