@@ -1,0 +1,63 @@
+name: Update Age
+
+on:
+  schedule:
+    # Executa pontualmente no dia 10 de janeiro de cada ano às 00:00 UTC
+    - cron: '0 0 10 1 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-age:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update age in index.html
+        run: |
+          python3 - << 'EOF'
+          import re
+          import os
+
+          file_path = 'index.html'
+          with open(file_path, 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          # Busca o padrão referente à idade (ex: "Idade:</span>24 anos")
+          pattern = r'(Idade:[^0-9]*?)(\d+)(\s*anos)'
+          match = re.search(pattern, content)
+
+          if not match:
+              raise SystemExit("Erro: Padrão de 'Idade' não foi encontrado em index.html")
+
+          current_age = int(match.group(2))
+          new_age = current_age + 1
+
+          new_content = re.sub(pattern, rf'\g<1>{new_age}\g<3>', content)
+
+          with open(file_path, 'w', encoding='utf-8') as f:
+              f.write(new_content)
+
+          print(f"Idade atualizada com sucesso: {current_age} -> {new_age}")
+
+          github_env = os.environ.get('GITHUB_ENV')
+          if github_env:
+              with open(github_env, 'a', encoding='utf-8') as env_file:
+                  env_file.write(f"NEW_AGE={new_age}\n")
+          EOF
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update age to ${NEW_AGE} anos"
+            git push origin main
+          else
+            echo "Nenhuma alteração para comitar."
+          fi
