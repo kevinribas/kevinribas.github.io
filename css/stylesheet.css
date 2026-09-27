@@ -11,9 +11,31 @@ html {
 }
 
 body {
-  background: #dddddd;
+  background-color: #111418;
+  background-image: linear-gradient(rgba(17, 20, 24, 0.75), rgba(17, 20, 24, 0.75)), url('../images/intro-bg.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #4c4d4d;
   font-family: "Poppins", sans-serif;
+}
+
+/* Global Fixed Background */
+.site-bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #111418;
+  background-image: linear-gradient(rgba(17, 20, 24, 0.75), rgba(17, 20, 24, 0.75)), url('../images/intro-bg.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
 }
 
 .preloader {
@@ -230,15 +252,21 @@ h6 {
 }
 
 .bg-dark {
-  background-color: #111418 !important;
+  background-color: rgba(17, 20, 24, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .bg-dark-1 {
-  background-color: #212529 !important;
+  background-color: rgba(33, 37, 41, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .bg-dark-2 {
-  background-color: #343a40 !important;
+  background-color: rgba(52, 58, 64, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 hr {
@@ -246,7 +274,7 @@ hr {
 }
 
 #main-wrapper {
-  background: #fff;
+  background: transparent;
 }
 
 .box #main-wrapper {
@@ -487,11 +515,13 @@ hr {
   top: 0;
   width: 260px;
   height: 100% !important;
-  background: #fff;
-  border-right: 1px solid rgba(0, 0, 0, 0.07);
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.065);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.065);
-  z-index: 2;
+  background: rgba(17, 20, 24, 0.92);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1030;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -545,6 +575,10 @@ html[dir="rtl"] .side-header .primary-menu {
     width: 100%;
     height: auto !important;
     overflow: visible;
+    background: rgba(17, 20, 24, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   html[dir="rtl"] .side-header #main-wrapper {
@@ -1137,7 +1171,9 @@ input:-internal-autofill-selected {
 }
 
 .qa-pillar-card {
-  background: #191c20;
+  background: rgba(25, 28, 32, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 2rem;
@@ -1173,7 +1209,9 @@ input:-internal-autofill-selected {
 
 /* Skills Cards & Tags */
 .skill-category-card {
-  background: #181b1f;
+  background: rgba(24, 27, 31, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 2rem;
@@ -1286,7 +1324,9 @@ input:-internal-autofill-selected {
 }
 
 .experience-card {
-  background: #191c20;
+  background: rgba(25, 28, 32, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 1.75rem;
@@ -1326,7 +1366,9 @@ input:-internal-autofill-selected {
 
 /* Contact Cards */
 .contact-card {
-  background: #191c20;
+  background: rgba(25, 28, 32, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 2.25rem 1.75rem;
